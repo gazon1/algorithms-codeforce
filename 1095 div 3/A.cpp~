@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define _DEBUG 1
+#define DEBUG() if(_DEBUG)
+
+
+size_t getLen(string t) {
+  size_t len_s = 0;
+  int i = 1;
+  int add = 2;
+  while (static_cast<int>(t.length) - i > 0) {
+    len_s += i;
+    i += add;
+  }
+  return len_s;
+}
+
+int main(int argc, char *argv[])
+{
+  
+  return 0;
+}

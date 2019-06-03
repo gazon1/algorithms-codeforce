@@ -1,0 +1,16 @@
+#include <vector>
+#include <cassert>
+#include <bits/stdc++.h>
+using namespace std;
+#include <sstream>
+#include <cassert>
+#include <tuple>
+#define _DEBUG 0
+#define DEBUG() if(_DEBUG)
+#define PVAR(x) DEBUG(){ cout << (#x) << ": " << x << "; "; }
+
+int main(int argc, char *argv[])
+{
+  
+  return 0;
+}

@@ -1,0 +1,233 @@
+// Реализуйте функции и методы классов и при необходимости добавьте свои
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <iomanip>
+#include <sstream>
+#include <exception>
+
+
+using namespace std;
+
+struct Day {
+  int value;
+
+  explicit Day(int new_value) { value = new_value; }
+
+};
+
+struct Month {
+  int value;
+
+  explicit Month(int new_value) { value = new_value; }
+
+};
+
+struct Year {
+  int value;
+
+  explicit Year(int new_value) { value = new_value; }
+
+};
+
+
+
+class Date {
+private:
+  int day;
+  int month;
+
+  int year;
+public:
+  Date(Day new_day,
+       Month new_month,
+       Year new_year) {
+    day = new_day.value;
+    month = new_month.value;
+    year = new_year.value;
+  }
+  
+  int GetYear() const { return day; }
+  int GetMonth() const { return month; }
+  int GetDay() const { return year; }
+
+  string GetString() const;
+};
+
+istream& operator>>(istream& stream, Date& date) {
+  int year, month, day;
+  stream >> day;
+  stream.ignore(1);
+  stream >> month;
+  stream.ignore(1);
+  stream >> year;
+  
+  date = Date(Day(day), Month(month), Year(year));
+  
+  return stream;
+}
+
+ostream& operator<<(ostream& stream, const Date& date) {
+  stream << date.GetYear() << "-" << date.GetMonth() << "-" << date.GetDay();
+  return stream;
+}
+
+
+
+//bool operator<(const Date& lhs, const Date& rhs) {
+//  if (lhs.GetYear() < rhs.GetYear()) return true;
+  //  else if (lhs.
+  //}
+
+class Database {
+public:
+  void AddEvent(const Date& date, const string& event);
+  bool DeleteEvent(const Date& date, const string& event);
+  int  DeleteDate(const Date& date);
+
+  //  /* ??? */ Find(const Date& date) const;
+  
+  void Print() const;
+  
+private:
+  const string file_name = "BD.txt";
+  const vector<string> columns = {"Дата", "Событие"};
+  const int width = 5;
+};
+
+
+int Database::DeleteDate(const Date& date) {
+
+
+}
+
+
+void Database::AddEvent(const Date& date, const string& event) {
+  ofstream output(this->file_name, ios::app);
+  if (output) {
+    output << date << " " << event << endl;
+    cout << "Event записан!" << endl;
+  } else {
+    cout << "Ошибка при открытии файла в методе AddEvent!" << endl;
+  }
+}
+
+
+
+void Database::Print() const {
+  for (const auto& c : this->columns) {
+    cout << setw(this->width) << c << ' ';
+  }
+
+  cout << endl;
+  cout << fixed << setprecision(2);
+  ifstream file(this->file_name);
+  string line;
+
+  if (file) {
+    while (getline(file, line)) {
+      cout << line << endl;
+    }
+    cout << "Все данные прочитаны!" << endl;
+  } else {
+    cout << "Ошибка при попытке открыть файл" << endl;
+  }
+
+}
+
+
+
+class Event {
+public:
+  string value;
+};
+ 
+istream& operator>>(istream& stream, Event& event) {
+  getline(stream, event.value);
+  return stream;
+}
+
+
+enum class Command {
+  ADD,
+  DEL,
+  FIND,
+  PRINT
+};
+
+Command getCommand(string str_command) {
+  if (str_command == "Add") return Command::ADD;
+  if (str_command == "Del") return Command::DEL;
+  if (str_command == "Find") return Command::DEL;
+  if (str_command == "Print") return Command::DEL;
+
+  stringstream ss << "Error: found unsuported command: " << str_command << endl;
+  throw runtime_error(ss.str());
+}
+
+void EnsureNextSymbolAndSkip(stringstream& stream) {
+
+
+}
+
+Date parseDate(const string& s) {
+  stringstream stream(s);
+  int day, month, year;
+  stream >> day;
+  stream.ignore(1);
+  stream >> month;
+  stream.ignore(1);
+  stream >> year;
+}
+
+
+int main() {
+  Database db;
+
+  ifstream input("BD.txt");
+  string line;
+  if (input) {
+    while (getline(input, line)) {
+      cout << line << endl;
+    }
+  } else {
+    cout << "Ошибка при открытии файла" << endl;
+  }
+
+  string command;
+  stringstream ss;
+  while (getline(cin, command)) {
+    ss << command;
+    ss >> command;
+    Command operation = getCommand(command);
+
+    switch (operation) {
+    case Command::ADD: {
+      Date date(Day(1), Month(1), Year(2019));
+      Event event;
+      ss >> date >> event;
+
+      db.AddEvent(date, event.value);
+      break;
+    }
+    case Command::DEL: {
+      int day, month, year;
+      Date date(Day(1), Month(1), Year(2019));
+      ss >> day;
+      ss.
+      db.DeleteDate(date);
+      break;
+    }
+    case Command::PRINT: {
+      db.Print();
+      break;
+    }
+    case Command::FIND: {
+      cout << "Find not yet supported!" << endl;
+      break;
+    }
+    }
+  }
+  return 0;
+}

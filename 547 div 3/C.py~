@@ -1,0 +1,25 @@
+from collections import Counter
+
+if __name__ == "__main__":
+    n = int(input())
+    ar = list(map(int, input().split()))
+
+    for i in range(n - 2):
+        ar[i + 1] = ar[i]
+
+    counts_perm = Counter(range(1, n + 1))
+
+    ans = False:
+    for i in range(1, n + 1):
+        if Counter(ar + i) == counts_perm:
+            _ = ar + i
+            print(_[0])
+            for j in _[1:]:
+                print(f" {j}")
+            ans = True
+            break
+    if not ans:
+        print(-1)
+
+
+    

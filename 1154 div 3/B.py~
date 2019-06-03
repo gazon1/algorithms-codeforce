@@ -1,0 +1,15 @@
+if __name__ == '__main__':
+    n = int(input())
+    ar = list(map(int, inpurt().split()))
+
+    t = max(ar) - min(ar)
+    t_half = t // 2
+    if (t % 2 == 0) and (max(ar) - min(ar) % t_half == 0):
+        if max(ar) - min(ar) // t_half == 1:
+            print(t_halt)
+        else:
+            print(t)
+    if (t % 2 == 0) and (max(ar) - min(ar) % t_half != 0):
+        print(-1)
+
+    

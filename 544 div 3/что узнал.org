@@ -1,0 +1,9 @@
+* [[https://informatics.mccme.ru/mod/resource/view.php?id%3D12716][2 указателя]] ( задача [[https://codeforces.com/contest/1133/problem/C][C]], [[https://codeforces.com/contest/1133/problem/E][E]])
+* как найти середину временного отрезка (задача [[https://codeforces.com/contest/1133/problem/A][A]])
+* Иногда полезно делать make file (см. задачу E)
+* post and pre incement doens't important in for loop if incremented value is not used
+* array is changed only at a compile time - vector - at running time
+* To debug define _DEBUG variable in #ifdef, #endif and compile with -D _DEBUG flag
+* fropen("input.txt", "r", stdin) for debugging
+* dynamic programming is about finding compomise between memory and running time - saving computations (см. задачу Е)
+

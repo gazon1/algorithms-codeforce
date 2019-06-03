@@ -1,0 +1,22 @@
+
+
+if __name__ == "__main__":
+    n = int(input())
+    s = input()
+
+    flag = True
+    for i in range(n):
+        if not flag:
+            break
+        for j in range(i+1, n):
+#            new_s = s[i:j]
+#            print("original", new_s, "reversed:", new_s[::-1])
+ #           first 
+            if s < s[:i] + s[i:j:-1] + s[j:]:
+                print("YES")
+                print(i, j)
+                flag = False
+                break
+
+    if flag:        
+        print("NO")

@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+#include <sstream>
+#include <cassert>
+
+#define _DEBUG 0
+#define DEBUG() if(_DEBUG)
+#define PVAR(x) DEBUG(){ cout << (#x) << ": " << x << "; "; }
+
+
+int main(int argc, char *argv[])
+{
+  
+  return 0;
+}

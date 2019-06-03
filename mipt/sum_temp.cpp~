@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+<result> summ_of_numbers(<first_number>, <second_number>)
+
+int main() {
+
+
+  return 0;
+}

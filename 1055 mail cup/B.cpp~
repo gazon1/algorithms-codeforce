@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(int argc, char *argv[])
+{
+  int n, m, l;
+  int p, d;
+  int query;
+
+  cin >> n >> m >> l;
+  int ar[n];
+  for (int i = 0; i < n; ++i) {
+    cin >> ar[i];
+  }
+  for (int i = 0; i < m; +=i) {
+    cin >> query;
+    if (query == 0) cout << cut_time(&ar, n, l);
+    else {
+      cin >> p >> d;
+      ar[p - 1] += d;
+    }
+
+  }
+  
+  return 0;
+}

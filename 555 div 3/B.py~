@@ -1,0 +1,12 @@
+if __name__ == "__main__":
+    n = int(input())
+    s = [int(i) for i in input()]
+    f = list(map(int, input().split()))
+
+    i = 0
+    while f[i] >= i + 1:
+        i += 1
+    for j in range(i):
+        s[j] = f[j]
+
+    print("".join(s))
